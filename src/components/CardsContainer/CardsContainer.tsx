@@ -1,43 +1,46 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { Character } from "rickmortyapi/dist/interfaces";
-
+import { LIKE, REMOVE_CARD } from "../../actions/actions";
+import "./CardsContainer.style.scss";
 type IProps = {
-  arr: Character[] | undefined;
+  data: Character[] | undefined;
+};
+export const toggleLike = (card: Character) => {
+  return { type: LIKE, payload: card };
 };
 
+export const deleteCard = (card: Character) => {
+  return { type: REMOVE_CARD, payload: card };
+};
 export const CardsContainer: React.FC<IProps> = (props) => {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<Character>({} as Character);
+  const dispatch = useDispatch();
+  const charactersArray = props.data;
 
-  const handleOpen = (character: Character) => {
-    setOpen(true);
-    setActive(character);
+  const handleToggleLike = (clickedItem: Character) => {
+    dispatch(toggleLike(clickedItem));
   };
-  const charactersArray = props.arr;
 
-  // if (!Component) {
-  //   return <div>Loading...</div>;
-  // }
-
+  const handleDelete = (clickedItem: Character) => {
+    dispatch(deleteCard(clickedItem));
+  };
   return (
-    <div>
-      <div>
-        {charactersArray ? (
-          charactersArray.map((character) => (
-            <div
-              key={character.id}
-              onClick={() => {
-                handleOpen(character);
-              }}
-            >
-              <img src={character.image} alt="Card name" />
-              <h1>{character.name}</h1>
+    <div className="cards-container">
+      {charactersArray ? (
+        charactersArray.map((character, i) => (
+          <div className="card" key={i}>
+            <div className="card__header">
+              <button className={`icon icon_like`} onClick={() => handleToggleLike(character)} />
+
+              <button className="icon icon_delete" onClick={() => handleDelete(character)} />
             </div>
-          ))
-        ) : (
-          <div>Uppps, seems like we cannot display anything</div>
-        )}
-      </div>
+            <img src={character.image} alt="Card name" />
+            <h2 className="card__title">{character.name}</h2>
+          </div>
+        ))
+      ) : (
+        <div>Uppps, seems like we cannot display anything</div>
+      )}
     </div>
   );
 };

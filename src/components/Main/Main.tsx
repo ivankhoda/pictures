@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Character } from "rickmortyapi/dist/interfaces";
-import { ADD_IMAGES } from "../../actions/actions";
+import { ADD_CARDS } from "../../actions/actions";
 import { RootState } from "../../reducers/reducer";
 import { CardsContainer } from "../CardsContainer";
 type Info = {
@@ -10,8 +10,8 @@ type Info = {
   next: string | null;
   prev: string | null;
 };
-export const addImages = (images: []) => {
-  return { type: ADD_IMAGES, payload: images };
+export const addcards = (cards: []) => {
+  return { type: ADD_CARDS, payload: cards };
 };
 
 export const Main = () => {
@@ -27,17 +27,20 @@ export const Main = () => {
       },
     });
     const data = await result.json();
-    dispatch(addImages(data));
+
+    dispatch(addcards(data.results));
   };
 
   useEffect(() => {
     getData("https://rickandmortyapi.com/api/character");
   }, []);
-  const imagesData = useSelector((state: RootState) => state.images);
-  console.log(imagesData);
+  const cardsData: { cards: any; likedCrads: any } = useSelector((state: RootState) => state.cards);
+  const likedCardsData: { cards: any; likedCrads: any } = useSelector((state: RootState) => state.likedCards);
+  console.log(likedCardsData, "liked cardData");
+
   return (
     <div className="main">
-      <CardsContainer arr={data} />
+      <CardsContainer data={cardsData.cards} />
     </div>
   );
 };

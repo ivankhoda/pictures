@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { combineReducers } from "redux";
-import { images } from "./imagesReducer";
-import { likedImages } from "./likedImagesReducer";
+import { cards } from "./cardsReducer";
+import { likedCards } from "./likedCardsReducer";
 
 export const rootReducer = combineReducers({
-  images,
-  likedImages,
+  cards,
+  likedCards,
 });
 export type RootState = ReturnType<typeof rootReducer>;

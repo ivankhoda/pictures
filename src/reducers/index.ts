@@ -1,2 +1,2 @@
-export * from "./imagesReducer";
-export * from "./likedImagesReducer";
+export * from "./cardsReducer";
+export * from "./likedCardsReducer";

@@ -1,0 +1,66 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  //max-width: 1300px;
+  padding: 20px;
+  margin: 15px;
+  overflow: hidden;
+  position: relative;
+  background: #60cbe6;
+  border-radius: 0.5vw;
+}
+
+.card {
+  transition: transform 500ms ease;
+  border-radius: 0.5vw;
+
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+
+  flex-direction: column;
+  transform: scale(1);
+  user-select: none;
+  border: solid;
+  background-color: white;
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 0.2vw 0.2vw 0 0;
+    box-sizing: border-box;
+  }
+}
+
+.card__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.card__title {
+  max-height: 1.8rem;
+  padding-left: 0.4rem;
+  font-size: 1.2rem;
+}
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 1rem;
+  color: white;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.icon_like {
+  background: url("../../assets/like-svgrepo-com_fill.svg");
+}
+.icon_delete {
+  background: url("../../assets/delete-svgrepo-com.svg");
+}
