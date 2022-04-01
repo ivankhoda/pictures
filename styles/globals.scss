@@ -11,8 +11,8 @@
     border: none;
   }
 }
-.timer,
-.wrapper {
+
+.paper {
   padding: 5px;
   @include _375 {
     padding: 0;
