@@ -1,0 +1,14 @@
+.main {
+  width: 100%;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.control-panel__header {
+  font-size: 2.5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

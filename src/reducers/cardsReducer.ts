@@ -1,4 +1,4 @@
-import { Character } from "rickmortyapi/dist/interfaces";
+import { Character, findItemInArrayById } from "../helpers";
 import { ADD_CARDS, REMOVE_CARD } from "./../actions/actions";
 
 type InitialState = {
@@ -19,10 +19,17 @@ export const cards = (state = initialState, action?: { type: string; payload: Ch
     case REMOVE_CARD:
       return {
         ...state,
-        //Add ts ignore for avoid TS complain "id doesn't exists on type" but in fact id exists .
         // @ts-ignore
         cards: state.cards.filter((item, index) => item.id !== action.payload.id),
       };
+
+    case "like":
+      // @ts-ignore
+      if (findItemInArrayById(state.cards, action.payload.id)) {
+        // @ts-ignore
+        action.payload.liked ? (action.payload.liked = false) : (action.payload.liked = true);
+      }
+      return { ...state };
 
     default:
       return state;
