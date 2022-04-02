@@ -39,7 +39,7 @@ export const Main = () => {
     <div className="main">
       <div className="control-panel">
         <h1 className="control-panel__header">Pictures</h1>
-        <Button disabled={false} className="" view="extra" size="m" onClick={handleToggleLike}>
+        <Button disabled={false} view="extra" size="m" onClick={handleToggleLike}>
           {showOnlyLiked
             ? `Show all cards: ${cardsData.cards.length}`
             : `Show liked cards: ${likedCardsData.likedCards.length}`}

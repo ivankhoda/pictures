@@ -37,7 +37,7 @@ const config = {
     extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
   },
   output: {
-    publicPath: isProduction ? "/control_panel_ui/" : "/",
+    publicPath: isProduction ? "/pictures/" : "/",
     filename: "[name].js",
   },
   devServer: {
