@@ -1,3 +1,4 @@
+@import "../../../styles/mixin";
 .cards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -8,6 +9,21 @@
   position: relative;
   background: #60cbe6;
   border-radius: 0.5vw;
+  @include _320 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include _375 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include _480 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include _600 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include _768 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 .cards-container__warning {
   width: 100%;

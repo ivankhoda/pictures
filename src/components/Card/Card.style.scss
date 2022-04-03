@@ -1,3 +1,4 @@
+@import "../../../styles/mixin";
 .card {
   transition: transform 500ms ease;
   border-radius: 0.5vw;
@@ -45,13 +46,26 @@
   &:hover {
     cursor: pointer;
   }
+  @include _320 {
+    margin: 0.5rem;
+  }
+  @include _375 {
+    margin: 0.5rem;
+  }
 }
 .icon_like {
   background: url("../../assets/like-svgrepo-com_fill.svg");
+
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .icon_like-liked {
   background: url("../../assets/like-svgrepo-com.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .icon_delete {
   background: url("../../assets/delete-svgrepo-com.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
