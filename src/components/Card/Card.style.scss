@@ -35,6 +35,12 @@
   max-height: 1.8rem;
   padding-left: 0.4rem;
   font-size: 1.2rem;
+  @include _320 {
+    font-size: 0.7rem;
+  }
+  @include _375 {
+    font-size: 0.8rem;
+  }
 }
 .icon {
   width: 1.5rem;
