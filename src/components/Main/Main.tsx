@@ -1,7 +1,7 @@
 import Button from "arui-feather/button";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addCards, Character } from "../../helpers";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Character } from "../../helpers";
 import { RootState } from "../../reducers/reducer";
 import { CardsContainer } from "../CardsContainer";
 import "./Main.style.scss";
@@ -11,25 +11,6 @@ export const Main = () => {
   const likedCardsData: { likedCards: Character[] } = useSelector((state: RootState) => state.likedCards);
 
   const [showOnlyLiked, setShowOnlyLiked] = useState(false);
-
-  const dispatch = useDispatch();
-
-  const getData = async (link: string | null) => {
-    const result = await fetch(`${link}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await result.json();
-
-    dispatch(addCards(data.results));
-  };
-
-  useEffect(() => {
-    getData("https://rickandmortyapi.com/api/character");
-  }, []);
 
   const handleToggleLike = () => {
     setShowOnlyLiked(!showOnlyLiked);

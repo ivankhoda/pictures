@@ -1,9 +1,9 @@
 import { Character, findItemInArrayById } from "../helpers";
-import { ADD_CARDS, REMOVE_CARD } from "./../actions/actions";
+import { ADD_CARDS, LIKE, REMOVE_CARD } from "./../actions/actions";
 
 type InitialState = {
-  cards: [];
-  likedCards: [];
+  cards: Character[];
+  likedCards: Character[];
 };
 
 const initialState: InitialState = {
@@ -11,19 +11,19 @@ const initialState: InitialState = {
   likedCards: [],
 };
 
-export const cards = (state = initialState, action?: { type: string; payload: Character[] | Character }) => {
+export const cards = (state = initialState, action?: { type: string; payload: Character[] }) => {
   switch (action?.type) {
     case ADD_CARDS:
-      if (action.payload && Array.isArray(action.payload)) return { ...state, cards: [...action.payload] };
+      return { ...state, cards: [...action.payload] };
 
     case REMOVE_CARD:
       return {
         ...state,
-        // @ts-ignore
-        cards: state.cards.filter((item, index) => item.id !== action.payload.id),
+        //@ts-ignore
+        cards: state.cards.filter((item) => item.id !== action.payload.id),
       };
 
-    case "like":
+    case LIKE:
       // @ts-ignore
       if (findItemInArrayById(state.cards, action.payload.id)) {
         // @ts-ignore
