@@ -9,7 +9,6 @@ import "./Main.style.scss";
 export const Main = () => {
   const cardsData: { cards: Character[] } = useSelector((state: RootState) => state.cards);
   const likedCardsData: { likedCards: Character[] } = useSelector((state: RootState) => state.likedCards);
-
   const [showOnlyLiked, setShowOnlyLiked] = useState(false);
 
   const handleToggleLike = () => {
