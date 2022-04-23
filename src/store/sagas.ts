@@ -11,7 +11,7 @@ const getData = async () => {
   const data = await result.json();
   return data.results;
 };
-const getDataAll = async (num?: number) => {
+async function getDataAll(num?: number) {
   try {
     let result = await fetch(`https://rickandmortyapi.com/api/character?page=${num}`, {
       method: "GET",
@@ -20,18 +20,18 @@ const getDataAll = async (num?: number) => {
       },
     });
     const data = await result.json();
-    return [...data.results];
+    return data;
   } catch (err) {
-    console.log(err);
+    return err;
   }
-};
+}
 //fetch data
 export function* fetchDataSaga(): any {
   try {
     const response: [] = yield call(getData);
-    const resp: [] = yield call(getDataAll);
-    console.log(resp, "dataall");
-    yield put(addCards(resp));
+    const resp: { info: {}; results: [] } = yield call(getDataAll);
+
+    yield put(addCards(resp.results));
   } catch (e) {
     yield put(addError(e));
   }
